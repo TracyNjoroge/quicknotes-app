@@ -1,9 +1,21 @@
 const noteForm = document.querySelector("#note-form");
 const noteInput = document.querySelector("#note-input");
 const noteCategory = document.querySelector("#note-category");
-const notesList = document.querySelector("#notes-list");
+const notesList = document.querySelector("#notes-list");const noteCount = document.querySelector("#note-count");
+const errorMessage = document.querySelector("#error-message");
 
 let notes = [];
+
+// Update note count
+function updateCount() {
+  if (notes.length === 0) {
+    noteCount.textContent = "You have no notes yet.";
+  } else if (notes.length === 1) {
+    noteCount.textContent = "You have 1 note.";
+  } else {
+    noteCount.textContent = `You have ${notes.length} notes.`;
+  }
+}
 
 
 // Display notes
@@ -29,12 +41,25 @@ function render() {
     date.classList.add("note-date");
     date.textContent = note.createdAt;
 
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-btn");
+    deleteButton.textContent = "Delete";
+
+    deleteButton.addEventListener("click", () => {
+      notes = notes.filter(existingNote => existingNote.id !== note.id);
+
+      render();
+    });
+
     listItem.appendChild(noteText);
     listItem.appendChild(categoryLabel);
     listItem.appendChild(date);
+    listItem.appendChild(deleteButton);
 
     notesList.appendChild(listItem);
   });
+
+  updateCount();
 }
 
 
@@ -44,6 +69,22 @@ noteForm.addEventListener("submit", event => {
 
   const text = noteInput.value.trim();
   const category = noteCategory.value;
+
+  // Validate empty note
+  if (text === "") {
+    errorMessage.textContent = "Please type a note first.";
+    return;
+  }
+
+  // Validate character limit
+  if (text.length > 200) {
+    errorMessage.textContent =
+      "Notes must be 200 characters or fewer.";
+    return;
+  }
+
+  // Clear error after valid note
+  errorMessage.textContent = "";
 
   const newNote = {
     id: Date.now(),
@@ -58,3 +99,7 @@ noteForm.addEventListener("submit", event => {
 
   noteInput.value = "";
 });
+
+
+// Display initial count
+updateCount();

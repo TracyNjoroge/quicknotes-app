@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #222;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #8e0000;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header p {
+  margin: 5px 0 0;
+}
+
+main {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+section {
+  background-color: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+
+form {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+}
+
+form div {
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+
+/* Buttons */
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #8e0000;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #650000;
+}
+
+#error-message {
+  color: red;
+  margin-bottom: 0;
+  min-height: 24px;
+}
+
+#notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.note-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #fafafa;
+}
+
+
+.category-personal {
+  border-left: 5px solid teal;
+}
+
+.category-work {
+  border-left: 5px solid darkred;
+}
+
+.category-study {
+  border-left: 5px solid blue;
+}
+
+
+/* Note content */
+.note-text {
+  margin-top: 0;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.category-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.note-date {
+  font-size: 13px;
+  color: #666;
+  margin: 5px 0 10px;
+}
+
+
+.delete-btn {
+  background-color: #555;
+  font-size: 14px;
+}
+
+.delete-btn:hover {
+  background-color: #333;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+
+@media (max-width: 600px) {
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  form div,
+  form button {
+    width: 100%;
+  }
+
+  main {
+    margin-top: 20px;
+    padding: 0 15px;
+  }
+
+  section {
+    padding: 20px;
+  }
+}
